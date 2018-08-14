@@ -21,13 +21,14 @@ def db_proxy():
         ip_and_port = proxy.ip_and_port
         type = proxy.type
         proxyurl = type + "://" + ip_and_port
-        fetch_result = fetch(fetch_url, proxyurl)
+        fetch_result = fetch(url=fetch_url, proxy=proxyurl, proxy_type='https')
         response = fetch_result['response_status_code']
         if response == 200:
             one_proxy_data_dic = {"proxy": proxyurl, "proxy_scheme": proxy.type}
             data.append(one_proxy_data_dic)
             logger.info("from db add proxyinfo:{} ".format(one_proxy_data_dic))
         else:
+            logger.info("proxy response is not 200, proxy info:{}, response_status_code:{}").formate(proxyurl, response)
             delete_proxy_from_db(proxy)
     return data
 
@@ -39,7 +40,7 @@ def json_proxy():
         for proxy in proxylist:
             proxyurl = proxy['proxy']
             if proxyurl != "http://192.168.88.176:3888":
-                fetch_result = fetch(fetch_url, proxyurl)
+                fetch_result = fetch(url=fetch_url, proxy=proxyurl, proxy_type='https')
                 response = fetch_result['response_status_code']
                 if response == 200:
                     data.append(proxy)
