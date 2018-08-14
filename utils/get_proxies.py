@@ -28,7 +28,7 @@ def db_proxy():
             data.append(one_proxy_data_dic)
             logger.info("from db add proxyinfo:{} ".format(one_proxy_data_dic))
         else:
-            logger.info("proxy response is not 200, proxy info:{}, response_status_code:{}").formate(proxyurl, response)
+            logger.info("proxy response is not 200, proxy info:{}, response_status_code:{}").format(proxyurl, response)
             delete_proxy_from_db(proxy)
     return data
 
