@@ -39,3 +39,6 @@ jsonpath = '/opt/jsonfile/proxy_list.json'
 
 # 校验网站的URL
 fetch_url = "https://cn.investing.com/"
+
+# 日志保存目录
+logdir = "/data/logs/spiderproxypool"

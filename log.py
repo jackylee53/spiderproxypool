@@ -3,8 +3,12 @@
 import os
 import logging
 from logging.handlers import SMTPHandler, TimedRotatingFileHandler
+from setting import CURRENT_DIR, logdir
 
-from setting import CURRENT_DIR
+# 判断日志文件目录是否存在
+existsdir = os.path.exists(logdir)
+if not existsdir:
+    os.makedirs(logdir)
 
 logger = logging.getLogger()
 logger.setLevel(logging.DEBUG)
@@ -16,7 +20,7 @@ logger_format = logging.Formatter(
     datefmt='%Y-%m-%d %H:%M:%S')
 console_handler.setFormatter(logger_format)
 logger.addHandler(console_handler)
-file_handler = TimedRotatingFileHandler(filename=CURRENT_DIR+'/log/log.txt', when="midnight",backupCount=10)
+file_handler = TimedRotatingFileHandler(filename=logdir+'/log.txt', when="midnight", backupCount=10)
 file_handler.suffix = "%Y-%m-%d.txt"
 file_handler.setLevel(logging.INFO)
 file_handler.setFormatter(logger_format)
