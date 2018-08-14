@@ -16,18 +16,18 @@ logger_format = logging.Formatter(
     datefmt='%Y-%m-%d %H:%M:%S')
 console_handler.setFormatter(logger_format)
 logger.addHandler(console_handler)
-file_handler = TimedRotatingFileHandler(filename=CURRENT_DIR+'/log/log.txt',when="midnight",backupCount=10)
+file_handler = TimedRotatingFileHandler(filename=CURRENT_DIR+'/log/log.txt', when="midnight",backupCount=10)
 file_handler.suffix = "%Y-%m-%d.txt"
 file_handler.setLevel(logging.INFO)
 file_handler.setFormatter(logger_format)
 logger.addHandler(file_handler)
 
 mail_handler = SMTPHandler(
-    mailhost='smtp.163.com',
-    fromaddr='nghuyong@163.com',
-    toaddrs='1013975672@qq.com',
+    mailhost='smtp.126.com',
+    fromaddr='sihuamail@126.com',
+    toaddrs='sihuamail@126.com',
     subject='这是一封proypool项目发来的邮件',
-    credentials=('account', 'password'))
+    credentials=('sihuamail@126.com', ''))
 
 mail_handler.setLevel(logging.ERROR)
 mail_handler.setFormatter(logger_format)
