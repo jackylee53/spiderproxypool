@@ -37,8 +37,7 @@ def fetch(url, proxy=None, proxy_type='http'):
             continue
     return {"response": response, "retry_num": retry_num, "round_trip_time": round((end - start), 2), "response_status_code": response_status_code}
 
-
 if __name__ == "__main__":
     check_anonymity_url = "http://www.xxorg.com/tools/checkproxy/"
     fetch_result = fetch(check_anonymity_url, Proxy_IP(ip_and_port="194.246.105.52:53281"))
-    print(fetch_result)
+    print("fetch_result", fetch_result)
