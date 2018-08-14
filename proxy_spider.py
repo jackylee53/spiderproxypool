@@ -32,14 +32,14 @@ class ProxySpider:
 
 
 if __name__ == "__main__":
-    db_init()
-    logger.info("-------Spider Start-------")
-    proxyspider = ProxySpider()
-    proxyspider.run()
-    check_proxy = Check_proxy()
-    check_proxy.proxies.extend(proxyspider.proxies)
-    check_proxy.run()
-    logger.info("-------Spider Finish-------")
+    # db_init()
+    # logger.info("-------Spider Start-------")
+    # proxyspider = ProxySpider()
+    # proxyspider.run()
+    # check_proxy = Check_proxy()
+    # check_proxy.proxies.extend(proxyspider.proxies)
+    # check_proxy.run()
+    # logger.info("-------Spider Finish-------")
     logger.info("-------Write Proxy Json Start-------")
     write_proxy()
     logger.info("-------Write Proxy Json Finish-------")

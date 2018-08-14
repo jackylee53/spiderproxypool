@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="be2bc062-9be8-46a1-b33f-f16cad85eaac" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/get_proxies.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/get_proxies.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proxy_spider.py" beforeDir="false" afterPath="$PROJECT_DIR$/proxy_spider.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -19,11 +19,12 @@
     <session id="-1183335003">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="4" />
+          <entry key="project.closed" value="5" />
           <entry key="project.open.time.1" value="3" />
+          <entry key="project.open.time.16" value="1" />
           <entry key="project.open.time.2" value="1" />
           <entry key="project.open.time.3" value="1" />
-          <entry key="project.opened" value="5" />
+          <entry key="project.opened" value="6" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -49,13 +50,13 @@
         <counts>
           <entry key="py" value="291" />
           <entry key="sh" value="3" />
-          <entry key="txt" value="37" />
+          <entry key="txt" value="44" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.spring.boot.run.usages" />
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="40" />
+          <entry key="PLAIN_TEXT" value="47" />
           <entry key="Python" value="291" />
         </counts>
       </usages-collector>
@@ -77,11 +78,11 @@
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/utils/get_proxies.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="158">
-              <caret line="30" column="99" selection-start-line="30" selection-start-column="99" selection-end-line="30" selection-end-column="99" />
+            <state relative-caret-position="242">
+              <caret line="34" column="17" selection-start-line="34" selection-start-column="17" selection-end-line="34" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -94,7 +95,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/check_proxy.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-660">
+            <state relative-caret-position="931">
               <caret line="59" column="29" selection-start-line="59" selection-start-column="29" selection-end-line="59" selection-end-column="29" />
             </state>
           </provider>
@@ -112,17 +113,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tool.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-155">
+            <state relative-caret-position="95">
               <caret line="11" column="4" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="4" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/proxy_spider.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="125">
-              <caret line="38" column="29" selection-start-line="38" selection-start-column="18" selection-end-line="38" selection-end-column="29" />
+            <state relative-caret-position="182">
+              <caret line="41" column="21" selection-start-line="34" selection-start-column="6" selection-end-line="41" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -130,7 +131,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/log.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-139">
+            <state relative-caret-position="361">
               <caret line="22" column="85" selection-start-line="22" selection-start-column="85" selection-end-line="22" selection-end-column="85" />
               <folding>
                 <element signature="e#40#49#0" expanded="true" />
@@ -170,6 +171,7 @@
         <option value="$PROJECT_DIR$/setting.py" />
         <option value="$PROJECT_DIR$/log.py" />
         <option value="$PROJECT_DIR$/utils/get_proxies.py" />
+        <option value="$PROJECT_DIR$/proxy_spider.py" />
       </list>
     </option>
   </component>
@@ -196,8 +198,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -213,14 +215,14 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="add_unversioned_files" value="$PROJECT_DIR$/.gitignore" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1534241017246" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1534241247819" />
     <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
     <property name="js.eslint.eslintPackage" value="" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -355,7 +357,8 @@
       <workItem from="1534234021287" duration="256000" />
       <workItem from="1534234603440" duration="1100000" />
       <workItem from="1534237344883" duration="300000" />
-      <workItem from="1534238516430" duration="1616000" />
+      <workItem from="1534238516430" duration="1831000" />
+      <workItem from="1534254591837" duration="191000" />
     </task>
     <task id="LOCAL-00001" summary="修改爬虫爬取网页信息">
       <created>1534226542839</created>
@@ -399,17 +402,24 @@
       <option name="project" value="LOCAL" />
       <updated>1534239547391</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="fix bug">
+      <created>1534241026230</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1534241026230</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5688000" />
+    <option name="totallyTimeSpent" value="6094000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="731" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2657512" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26979" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="JRebel" order="3" side_tool="true" />
@@ -417,20 +427,20 @@
       <window_info id="Favorites" order="5" side_tool="true" />
       <window_info id="Capture Tool" order="6" />
       <window_info id="Image Layers" order="7" />
-      <window_info anchor="bottom" id="Messages" />
       <window_info anchor="bottom" id="JRebel Executor" order="0" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" />
-      <window_info active="true" anchor="bottom" id="Run" order="3" visible="true" weight="0.4707792" />
+      <window_info anchor="bottom" id="Run" order="3" weight="0.4707792" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="7" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.41396105" />
+      <window_info anchor="bottom" id="Terminal" order="8" visible="true" weight="0.41396105" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" order="10" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="11" />
       <window_info anchor="bottom" id="JRebel Console" order="12" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="13" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -456,9 +466,9 @@
     <MESSAGE value="修改爬虫爬取网页信息" />
     <MESSAGE value="更新" />
     <MESSAGE value="新增脚本信息" />
-    <MESSAGE value="fix bug" />
     <MESSAGE value="修改保存日志信息" />
-    <option name="LAST_COMMIT_MESSAGE" value="修改保存日志信息" />
+    <MESSAGE value="fix bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix bug" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/README.md">
@@ -493,6 +503,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/spider/proxylists_spider.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-228" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spider/base_spider.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/requirements.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="95">
@@ -506,6 +524,13 @@
     <entry file="file://$PROJECT_DIR$/spider/sixsixip_spider.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/check_proxy.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="931">
+          <caret line="59" column="29" selection-start-line="59" selection-start-column="29" selection-end-line="59" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/db.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="608">
@@ -513,18 +538,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/spider/proxylists_spider.py">
+    <entry file="file://$PROJECT_DIR$/tool.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-228" />
+        <state relative-caret-position="95">
+          <caret line="11" column="4" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="4" />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/spider/base_spider.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/check_proxy.py">
+    <entry file="file://$PROJECT_DIR$/log.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-660">
-          <caret line="59" column="29" selection-start-line="59" selection-start-column="29" selection-end-line="59" selection-end-column="29" />
+        <state relative-caret-position="361">
+          <caret line="22" column="85" selection-start-line="22" selection-start-column="85" selection-end-line="22" selection-end-column="85" />
+          <folding>
+            <element signature="e#40#49#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -535,34 +562,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/proxy_spider.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="38" column="29" selection-start-line="38" selection-start-column="18" selection-end-line="38" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/log.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-139">
-          <caret line="22" column="85" selection-start-line="22" selection-start-column="85" selection-end-line="22" selection-end-column="85" />
-          <folding>
-            <element signature="e#40#49#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tool.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-155">
-          <caret line="11" column="4" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/utils/get_proxies.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
-          <caret line="30" column="99" selection-start-line="30" selection-start-column="99" selection-end-line="30" selection-end-column="99" />
+        <state relative-caret-position="242">
+          <caret line="34" column="17" selection-start-line="34" selection-start-column="17" selection-end-line="34" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/proxy_spider.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="182">
+          <caret line="41" column="21" selection-start-line="34" selection-start-column="6" selection-end-line="41" selection-end-column="21" />
         </state>
       </provider>
     </entry>
