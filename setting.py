@@ -33,14 +33,14 @@ RETRY_NUM = 3
 CURRENT_DIR = os.path.dirname(os.path.realpath(__file__))
 
 # 代理文件保存地址
-# jsonpath = '/opt/jsonfile/proxy_list.json'
+jsonpath = '/opt/jsonfile/proxy_list.json'
 
-jsonpath = '/Users/jacky/Downloads/proxy_list.json'
+# jsonpath = '/Users/jacky/Downloads/proxy_list.json'
 
 # 校验网站的URL
 fetch_url = "https://cn.investing.com/"
 
 # 日志保存目录
-# logdir = "/data/logs/spiderproxypool"
+logdir = "/data/logs/spiderproxypool"
 
-logdir = "/Users/jacky/Downloads"
+# logdir = "/Users/jacky/Downloads"
