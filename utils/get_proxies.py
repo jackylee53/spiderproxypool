@@ -9,6 +9,7 @@ from decimal import Decimal
 from log import logger
 from db import delete_proxy_from_db
 from utils.sendmail import sendMail
+from functools import reduce
 
 def default(obj):
     if isinstance(obj, Decimal):
@@ -56,12 +57,14 @@ def write_proxy():
     mergeproxy = dbproxy + jsonproxy
     httpproxy = {"proxy_scheme": "http", "proxy": "http://192.168.88.176:3888"}
     mergeproxy.append(httpproxy)
+    f = lambda x, y: x if y in x else x + [y]
+    mergeproxy = reduce(f, [[], ] + mergeproxy)
     logger.info("final proxyinfos:{} ".format(mergeproxy))
-    if len(mergeproxy) >=2:
+    if len(mergeproxy) >= 2:
         f = open(jsonpath, 'w', encoding="utf8")
         f.seek(0)
         f.truncate()
-        f.write(json.dumps(list(set(mergeproxy)), ensure_ascii=False)+"\n")
+        f.write(json.dumps(mergeproxy, ensure_ascii=False)+"\n")
         f.close()
         logger.info("Write Json Success!")
     else:
