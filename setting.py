@@ -42,3 +42,5 @@ fetch_url = "https://cn.investing.com/"
 
 # 日志保存目录
 logdir = "/data/logs/spiderproxypool"
+
+# logdir = "/Users/jacky/Downloads"

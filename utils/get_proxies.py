@@ -8,6 +8,7 @@ import json
 from decimal import Decimal
 from log import logger
 from db import delete_proxy_from_db
+from utils.sendmail import sendMail
 
 def default(obj):
     if isinstance(obj, Decimal):
@@ -56,12 +57,19 @@ def write_proxy():
     httpproxy = {"proxy_scheme": "http", "proxy": "http://192.168.88.176:3888"}
     mergeproxy.append(httpproxy)
     logger.info("final proxyinfos:{} ".format(mergeproxy))
-    f = open(jsonpath, 'w', encoding="utf8")
-    f.seek(0)
-    f.truncate()
-    f.write(json.dumps(list(set(mergeproxy)), ensure_ascii=False)+"\n")
-    f.close()
-    logger.info("Write Json Success!")
+    if len(mergeproxy) >=2:
+        f = open(jsonpath, 'w', encoding="utf8")
+        f.seek(0)
+        f.truncate()
+        f.write(json.dumps(list(set(mergeproxy)), ensure_ascii=False)+"\n")
+        f.close()
+        logger.info("Write Json Success!")
+    else:
+        subcontent = "没有可用的https代理"
+        content = mergeproxy + "\n" + "没有可用的https代理,请管理员登录处理！"
+        frominfo = "告警邮件"
+        sendMail(subcontent=subcontent, content=content, frominfo=frominfo)
+        logger.info("Update Error! No Available Https Proxy, SendMail To Admin!")
 
 if __name__ == "__main__":
     write_proxy()
