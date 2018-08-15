@@ -28,7 +28,7 @@ def db_proxy():
             data.append(one_proxy_data_dic)
             logger.info("from db add proxyinfo:{} ".format(one_proxy_data_dic))
         else:
-            logger.info("proxy response is not 200, proxy info:{}".format(proxyurl))
+            logger.info("proxy response is not 200, proxy info:{}, response_status_code:{}".format(proxyurl, response))
             delete_proxy_from_db(proxy)
     return data
 
@@ -45,6 +45,8 @@ def json_proxy():
                 if response == 200:
                     data.append(proxy)
                     logger.info("from jsonfile add proxyinfo:{} ".format(proxy))
+                else:
+                    logger.info("proxy response is not 200, proxy info:{}, response_status_code:{}".format(proxyurl, response))
     return data
 
 def write_proxy():
@@ -57,7 +59,7 @@ def write_proxy():
     f = open(jsonpath, 'w', encoding="utf8")
     f.seek(0)
     f.truncate()
-    f.write(json.dumps(mergeproxy, ensure_ascii=False)+"\n")
+    f.write(json.dumps(list(set(mergeproxy)), ensure_ascii=False)+"\n")
     f.close()
     logger.info("Write Json Success!")
 
