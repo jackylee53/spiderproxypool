@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="be2bc062-9be8-46a1-b33f-f16cad85eaac" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/setting.py" beforeDir="false" afterPath="$PROJECT_DIR$/setting.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/proxypool.db" beforeDir="false" afterPath="$PROJECT_DIR$/proxypool.db" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -213,12 +213,7 @@
             <path>
               <item name="spiderproxypool" type="b2602c69:ProjectViewProjectNode" />
               <item name="spiderproxypool" type="462c0819:PsiDirectoryNode" />
-              <item name="spider" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="spiderproxypool" type="b2602c69:ProjectViewProjectNode" />
-              <item name="spiderproxypool" type="462c0819:PsiDirectoryNode" />
-              <item name="utils" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="spiderproxypool" type="b2602c69:ProjectViewProjectNode" />
@@ -234,7 +229,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="add_unversioned_files" value="$PROJECT_DIR$/.gitignore" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1534304495633" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1534304517852" />
     <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
     <property name="js.eslint.eslintPackage" value="" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -398,7 +393,7 @@
       <workItem from="1534297075497" duration="886000" />
       <workItem from="1534298326995" duration="660000" />
       <workItem from="1534299974046" duration="403000" />
-      <workItem from="1534300739190" duration="3599000" />
+      <workItem from="1534300739190" duration="3920000" />
     </task>
     <task id="LOCAL-00001" summary="修改爬虫爬取网页信息">
       <created>1534226542839</created>
@@ -498,17 +493,23 @@
       <option name="project" value="LOCAL" />
       <updated>1534304476082</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="当没有可用代理时，增加邮件告警功能">
+      <created>1534304501524</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1534304501524</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14038000" />
+    <option name="totallyTimeSpent" value="14359000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="731" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.28594506" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.28594506" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="JRebel" order="3" side_tool="true" />
@@ -519,7 +520,7 @@
       <window_info anchor="bottom" id="JRebel Executor" order="0" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" />
-      <window_info active="true" anchor="bottom" id="Run" order="3" visible="true" weight="0.5746753" />
+      <window_info anchor="bottom" id="Run" order="3" visible="true" weight="0.5746753" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
