@@ -25,22 +25,21 @@ USER_AGENT_LIST = [
 
 IP_PROXY_REGEX = r'(((25[0-5]|2[0-4]\d|[0-1]\d{2}|[1-9]?\d)\.){3}(25[0-5]|2[0-4]\d|[0-1]\d{2}|[1-9]?\d):\d{2,4})'
 
-
 TIME_OUT = 20
 
 RETRY_NUM = 3
 
 CURRENT_DIR = os.path.dirname(os.path.realpath(__file__))
 
-# 代理文件保存地址
-jsonpath = '/opt/jsonfile/proxy_list.json'
-
-# jsonpath = '/Users/jacky/Downloads/proxy_list.json'
+import platform
+if platform.system() != 'Darwin':
+        # 现网部署日志及json文件存储路径
+        jsonpath = '/opt/jsonfile/proxy_list.json'
+        logdir = "/data/logs/spiderproxypool"
+else:
+        # 本地测试
+        jsonpath = '/Users/jacky/Downloads/proxy_list.json'
+        logdir = "/Users/jacky/Downloads/"
 
 # 校验网站的URL
 fetch_url = "https://cn.investing.com/"
-
-# 日志保存目录
-logdir = "/data/logs/spiderproxypool"
-
-# logdir = "/Users/jacky/Downloads"

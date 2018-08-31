@@ -6,8 +6,7 @@ from simplejson import JSONDecodeError
 import requests
 from bs4 import BeautifulSoup
 from gevent import monkey
-from requests.exceptions import ProxyError
-from db import delete_proxy_from_db, save_proxy_to_db
+from db import delete_proxy_from_db, save_proxy_to_db, update_proxy_score
 from log import logger
 from proxy import Proxy_IP
 from tool import fetch
@@ -72,16 +71,17 @@ class Check_proxy:
         if response is None or spider_response_status != 200:
             logger.info('response is None , proxy:{}'.format(proxy))
             if self.recheck:
-                delete_proxy_from_db(proxy)
+                update_proxy_score(proxy, res=0)
             return
         response.encoding = 'utf-8'
         html = response.text
         if "豆瓣读书,新书速递,畅销书,书评,书单" in html:
             proxy.round_trip_time = fetch_result['round_trip_time']
-            save_proxy_to_db(proxy)
+            update_proxy_score(proxy)
+            # save_proxy_to_db(proxy)
         else:
             if self.recheck:
-                delete_proxy_from_db(proxy)
+                update_proxy_score(proxy, res=0)
             return
 
     def _check_one_proxy(self, proxy):

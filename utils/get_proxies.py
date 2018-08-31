@@ -5,9 +5,10 @@ from proxy import Proxy_IP
 from tool import fetch
 from setting import fetch_url, jsonpath
 import json
+import datetime
 from decimal import Decimal
 from log import logger
-from db import delete_proxy_from_db
+from db import update_proxy_score, save_proxy_to_db
 from utils.sendmail import sendMail
 from functools import reduce
 
@@ -20,18 +21,23 @@ def db_proxy():
     data = []
     proxies = Proxy_IP.select().where(Proxy_IP.type == 'https').order_by(Proxy_IP.timestamp)
     for proxy in proxies:
+        right_times = int(proxy.right_times)
+        all_times = int(proxy.all_times)
+        success_rate = right_times*1.0/all_times
         ip_and_port = proxy.ip_and_port
         type = proxy.type
         proxyurl = type + "://" + ip_and_port
         fetch_result = fetch(url=fetch_url, proxy=proxyurl, proxy_type='https')
         response = fetch_result['response_status_code']
-        if response == 200:
+        if success_rate > 0.3 and response == 200:
+            update_proxy_score(proxy, res=1)
             one_proxy_data_dic = {"proxy": proxyurl, "proxy_scheme": proxy.type}
             data.append(one_proxy_data_dic)
             logger.info("from db add proxyinfo:{} ".format(one_proxy_data_dic))
         else:
             logger.info("proxy response is not 200, proxy info:{}, response_status_code:{}".format(proxyurl, response))
-            delete_proxy_from_db(proxy)
+            # delete_proxy_from_db(proxy)
+            update_proxy_score(proxy)
     return data
 
 def json_proxy():
@@ -44,11 +50,42 @@ def json_proxy():
             if proxyurl != "http://192.168.88.176:3888":
                 fetch_result = fetch(url=fetch_url, proxy=proxyurl, proxy_type='https')
                 response = fetch_result['response_status_code']
-                if response == 200:
-                    data.append(proxy)
-                    logger.info("from jsonfile add proxyinfo:{} ".format(proxy))
+                # 查询代理IP是否在DB中
+                ip_and_port = proxyurl.split('/')[-1]
+                httptype = proxyurl.split(':')[0]
+                proxies = Proxy_IP.select().where(Proxy_IP.ip_and_port == ip_and_port, Proxy_IP.type == httptype)
+                # print("proxies", proxies)
+                # 构建对象
+                proxyinfo = Proxy_IP(ip_and_port=ip_and_port)
+                proxyinfo.ip_and_port = ip_and_port
+                proxyinfo.timestamp = datetime.datetime.now()
+
+                if len(proxies):
+                    # IP在DB中
+                    if response == 200:
+                        update_proxy_score(proxyinfo, res=1)
+                        data.append(proxy)
+                        logger.info("from jsonfile add proxyinfo:{} ".format(proxy))
+                    else:
+                        update_proxy_score(proxyinfo)
+                        logger.info("proxy response is not 200, cancel from jsonfile, proxy info:{} ".format(proxy))
                 else:
-                    logger.info("proxy response is not 200, proxy info:{}, response_status_code:{}".format(proxyurl, response))
+                    # IP不在DB中
+                    proxyinfo.type = 'https'
+                    proxyinfo.anonymity = 'high_anonymity'
+                    proxyinfo.round_trip_time = '1'
+                    proxyinfo.country = 'China'
+                    proxyinfo.all_times = '1'
+                    proxyinfo.timestamp = datetime.datetime.now()
+                    if response == 200:
+                        proxyinfo.right_times = '1'
+                        save_proxy_to_db(proxyinfo)
+                        data.append(proxy)
+                        logger.info("from jsonfile add proxyinfo:{} ".format(proxy))
+                    else:
+                        proxyinfo.right_times = '1'
+                        save_proxy_to_db(proxyinfo)
+                        logger.info("proxy response is not 200, cancel from jsonfile, proxy info:{} ".format(proxy))
     return data
 
 def write_proxy():

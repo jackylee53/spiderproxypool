@@ -14,6 +14,8 @@ class Proxy_IP(Model):
     round_trip_time = DoubleField(null=True)
     country = CharField(null=True)
     anonymity = CharField(null=True)
+    all_times = CharField(null=True)
+    right_times = CharField(null=True)
     timestamp = DateTimeField(default=datetime.datetime.now)
 
     def __str__(self):
