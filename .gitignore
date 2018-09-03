@@ -2,3 +2,5 @@
 .gitignore
 .idea
 .idea/*.xml
+.idea/workspace.xml
+utils/__pycache__/sendmail.cpython-36.pyc
