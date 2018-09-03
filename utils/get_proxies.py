@@ -21,19 +21,21 @@ def db_proxy():
     data = []
     proxies = Proxy_IP.select().where(Proxy_IP.type == 'https').order_by(Proxy_IP.timestamp)
     for proxy in proxies:
-        right_times = int(proxy.right_times)
-        all_times = int(proxy.all_times)
-        success_rate = right_times*1.0/all_times
+        r_times = int(proxy.right_times)
+        a_times = int(proxy.all_times)
+        success_rate = r_times*1.0/a_times
         ip_and_port = proxy.ip_and_port
-        type = proxy.type
-        proxyurl = type + "://" + ip_and_port
+        httptype = proxy.type
+        proxyurl = httptype + "://" + ip_and_port
         fetch_result = fetch(url=fetch_url, proxy=proxyurl, proxy_type='https')
         response = fetch_result['response_status_code']
+        # 成功率超过30%的代理在DB中增加成功次数
         if success_rate > 0.3 and response == 200:
             update_proxy_score(proxy, res=1)
             one_proxy_data_dic = {"proxy": proxyurl, "proxy_scheme": proxy.type}
             data.append(one_proxy_data_dic)
             logger.info("from db add proxyinfo:{} ".format(one_proxy_data_dic))
+        # 成功率低于30%的代理在DB中减少成功次数,成功次数低于0则删除记录
         else:
             logger.info("proxy response is not 200, proxy info:{}, response_status_code:{}".format(proxyurl, response))
             # delete_proxy_from_db(proxy)
@@ -89,14 +91,20 @@ def json_proxy():
     return data
 
 def write_proxy():
+    # 获取从DB中查询https代理的记录
     dbproxy = db_proxy()
+    # 获取从已有Json中查询https代理的记录
     jsonproxy = json_proxy()
+    # 合并代理记录
     mergeproxy = dbproxy + jsonproxy
+    # 增加默认代理信息
     httpproxy = {"proxy_scheme": "http", "proxy": "http://192.168.88.176:3888"}
     mergeproxy.append(httpproxy)
+    # 代理去重
     f = lambda x, y: x if y in x else x + [y]
     mergeproxy = reduce(f, [[], ] + mergeproxy)
     logger.info("final proxyinfos:{} ".format(mergeproxy))
+    # 预警
     if len(mergeproxy) >= 2:
         f = open(jsonpath, 'w', encoding="utf8")
         f.seek(0)
@@ -106,7 +114,7 @@ def write_proxy():
         logger.info("Write Json Success!")
     else:
         subcontent = "没有可用的https代理"
-        content = mergeproxy + "\n" + "没有可用的https代理,请管理员登录处理！"
+        content = str(mergeproxy) + "\n" + "没有可用的https代理,请管理员登录处理！"
         frominfo = "告警邮件"
         sendMail(subcontent=subcontent, content=content, frominfo=frominfo)
         logger.info("Update Error! No Available Https Proxy, SendMail To Admin!")
