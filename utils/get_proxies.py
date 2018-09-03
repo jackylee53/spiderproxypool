@@ -55,14 +55,14 @@ def json_proxy():
                 # 查询代理IP是否在DB中
                 ip_and_port = proxyurl.split('/')[-1]
                 httptype = proxyurl.split(':')[0]
-                proxies = Proxy_IP.select().where(Proxy_IP.ip_and_port == ip_and_port, Proxy_IP.type == httptype)
+                proxies = Proxy_IP.select().where(Proxy_IP.ip_and_port == ip_and_port, Proxy_IP.type == httptype).first()
                 # print("proxies", proxies)
                 # 构建对象
                 proxyinfo = Proxy_IP(ip_and_port=ip_and_port)
                 proxyinfo.ip_and_port = ip_and_port
                 proxyinfo.timestamp = datetime.datetime.now()
 
-                if len(proxies):
+                if proxies:
                     # IP在DB中
                     if response == 200:
                         update_proxy_score(proxyinfo, res=1)
