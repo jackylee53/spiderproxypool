@@ -5,12 +5,17 @@ from proxy import Proxy_IP
 from tool import fetch
 from setting import fetch_url, jsonpath
 import json
+import re
 import datetime
 from decimal import Decimal
 from log import logger
 from db import update_proxy_score, save_proxy_to_db
 from utils.sendmail import sendMail
 from functools import reduce
+
+default_proxy = [{"proxy_scheme": "http", "proxy": "http://192.168.88.176:3888"},\
+                 {"proxy_scheme": "https", "proxy": "http://192.168.88.155:3888"},\
+                 {"proxy_scheme": "http", "proxy": "http://192.168.88.155:3888"}]
 
 def default(obj):
     if isinstance(obj, Decimal):
@@ -49,7 +54,10 @@ def json_proxy():
     if proxylist:
         for proxy in proxylist:
             proxyurl = proxy['proxy']
-            if proxyurl != "http://192.168.88.176:3888":
+            # 端口是3888的为私有代理
+            pattern = ':3888$'
+            if not re.search(pattern, proxyurl):
+            # if proxyurl != "http://192.168.88.176:3888":
                 fetch_result = fetch(url=fetch_url, proxy=proxyurl, proxy_type='https')
                 response = fetch_result['response_status_code']
                 # 查询代理IP是否在DB中
@@ -95,11 +103,8 @@ def write_proxy():
     dbproxy = db_proxy()
     # 获取从已有Json中查询https代理的记录
     jsonproxy = json_proxy()
-    # 合并代理记录
-    mergeproxy = dbproxy + jsonproxy
-    # 增加默认代理信息
-    httpproxy = {"proxy_scheme": "http", "proxy": "http://192.168.88.176:3888"}
-    mergeproxy.append(httpproxy)
+    # 合并代理记录,并添加默认代理
+    mergeproxy = dbproxy + jsonproxy + default_proxy
     # 代理去重
     f = lambda x, y: x if y in x else x + [y]
     mergeproxy = reduce(f, [[], ] + mergeproxy)
