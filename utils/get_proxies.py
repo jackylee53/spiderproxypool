@@ -14,7 +14,7 @@ from utils.sendmail import sendMail
 from functools import reduce
 
 default_proxy = [{"proxy_scheme": "http", "proxy": "http://192.168.88.176:3888"},\
-                 {"proxy_scheme": "https", "proxy": "http://192.168.88.155:3888"},\
+                 {"proxy_scheme": "https", "proxy": "https://192.168.88.155:3888"},\
                  {"proxy_scheme": "http", "proxy": "http://192.168.88.155:3888"}]
 
 def default(obj):
