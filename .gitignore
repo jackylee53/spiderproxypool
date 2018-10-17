@@ -1,6 +1,17 @@
 # Created by .ignore support plugin (hsz.mobi)
 .gitignore
-.idea
+.idea/
 .idea/*.xml
 .idea/workspace.xml
 utils/__pycache__/sendmail.cpython-36.pyc
+
+__pycache__/log.cpython-37.pyc
+__pycache__/proxy.cpython-37.pyc
+__pycache__/setting.cpython-37.pyc
+__pycache__/tool.cpython-37.pyc
+spider/__pycache__/__init__.cpython-37.pyc
+spider/__pycache__/base_spider.cpython-37.pyc
+.idea/inspectionProfiles/*.xml
+.idea/dataSources.xml
+.idea/spiderproxypool.iml
+.gitignore/

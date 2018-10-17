@@ -14,7 +14,7 @@ from tool import fetch
 class XicidailiSpider(BaseSpider):
     def __init__(self):
         super(XicidailiSpider, self).__init__()
-        urls = ["http://www.xicidaili.com/nn/{}".format(k) for k in range(1, 8)]
+        urls = ["http://www.xicidaili.com/nn/{}".format(k) for k in range(1, 2)]
         for url in urls:
             self.url_list.put(url)
         self.proxypool = []

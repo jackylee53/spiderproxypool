@@ -3,7 +3,7 @@
 
 from proxy import Proxy_IP
 from tool import fetch
-from setting import fetch_url, jsonpath
+from setting import fetch_url, jsonpath, RETRY_NUM
 import json
 import re
 import datetime
@@ -32,17 +32,20 @@ def db_proxy():
         ip_and_port = proxy.ip_and_port
         httptype = proxy.type
         proxyurl = httptype + "://" + ip_and_port
+        logger.info("db proxyurl is {}".format(proxyurl))
         fetch_result = fetch(url=fetch_url, proxy=proxyurl, proxy_type='https')
         response = fetch_result['response_status_code']
-        # 成功率超过30%的代理在DB中增加成功次数
-        if success_rate > 0.3 and response == 200:
+        retry_num = fetch_result['retry_num']
+        retry_success_rate = retry_num*1.0/RETRY_NUM
+        # 总成功率超过60%,最近一个时刻尝试2次(总重试次数为3)就成功的代理
+        if success_rate > 0.6 and response == 200 and retry_success_rate < 0.7:
             update_proxy_score(proxy, res=1)
             one_proxy_data_dic = {"proxy": proxyurl, "proxy_scheme": proxy.type}
             data.append(one_proxy_data_dic)
             logger.info("from db add proxyinfo:{} ".format(one_proxy_data_dic))
         # 成功率低于30%的代理在DB中减少成功次数,成功次数低于0则删除记录
         else:
-            logger.info("proxy response is not 200, proxy info:{}, response_status_code:{}".format(proxyurl, response))
+            logger.info("proxy success is too low, proxy info:{}, latest response_status_code:{}".format(proxyurl, response))
             # delete_proxy_from_db(proxy)
             update_proxy_score(proxy)
     return data
@@ -51,6 +54,7 @@ def json_proxy():
     data = []
     jsonfile = open(jsonpath, encoding='utf-8')
     proxylist = json.load(jsonfile)
+    jsonfile.close()
     if proxylist:
         for proxy in proxylist:
             proxyurl = proxy['proxy']
